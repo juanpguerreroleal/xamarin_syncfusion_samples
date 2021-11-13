@@ -1,0 +1,11 @@
+# Ignora Bin y Obj de proyecto compartido
+SyncfusionSamples/bin/
+SyncfusionSamples/obj/
+SyncfusionSamples.Android/bin/
+SyncfusionSamples.Android/obj/
+SyncfusionSamples.iOS/bin/
+SyncfusionSamples.iOS/obj/
+# Ignora vs files
+.vs/
+# Ignora UpgradeLog
+UpgradeLog.htm
