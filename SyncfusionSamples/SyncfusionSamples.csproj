@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\MultipleTemplatesRotatorView.xaml.cs">
       <DependentUpon>MultipleTemplatesRotatorView.xaml</DependentUpon>
     </Compile>
