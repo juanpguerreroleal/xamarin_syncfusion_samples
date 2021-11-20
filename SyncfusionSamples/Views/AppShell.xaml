@@ -8,6 +8,5 @@
             <ShellContent Title="Multiple Templates Into Rotator"
                       ContentTemplate="{DataTemplate views:MultipleTemplatesRotatorView}" />
         </Tab>
-        
     </FlyoutItem>
 </Shell>

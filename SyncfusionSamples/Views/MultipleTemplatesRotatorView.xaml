@@ -2,12 +2,74 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SyncfusionSamples.Views.MultipleTemplatesRotatorView"
-             BindingContext="{Binding Main, Source={StaticResource Key=locator}}">
+             xmlns:xforms="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms" 
+             xmlns:views="clr-namespace:SyncfusionSamples.Views.Templates" 
+             xmlns:helpers="clr-namespace:SyncfusionSamples.Helpers" xmlns:xforms1="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             BindingContext="{Binding Main.MultipleTemplatesRotator, Source={StaticResource Key=locator}}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Static Templates -->
+            <DataTemplate x:Key="StackTemplate">
+                <views:StackTemplate />
+            </DataTemplate>
+            <DataTemplate x:Key="ChartTemplate">
+                <views:ChartTemplate />
+            </DataTemplate>
+            <DataTemplate x:Key="DefaultTemplate">
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="Template not implemented"
+                    VerticalTextAlignment="Center"/>
+            </DataTemplate>
+
+            <!-- Dynamic Templates -->
+            <DataTemplate x:Key="CustomTemplates">
+                <ContentPresenter Content="{Binding Template}" />
+            </DataTemplate>
+            <!-- Dynamic Views -->
+            <DataTemplate x:Key="CustomViews">
+                <ContentPresenter Content="{Binding ItemTemplate}" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Multiple Templates Into Rotator"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label
+                FontSize="16"
+                Text="Multiple rotator item templates using selector"
+                HorizontalTextAlignment="Center"/>
+                <xforms:SfRotator
+                HeightRequest="200"
+                ItemsSource="{Binding RotatorList}">
+                    <xforms:SfRotator.ItemTemplate>
+                        <helpers:MultipleTemplatesRotatorSelector
+                        ChartTemplate="{StaticResource ChartTemplate}"
+                        DefaultTemplate="{StaticResource DefaultTemplate}"
+                        StackTemplate="{StaticResource StackTemplate}"/>
+                    </xforms:SfRotator.ItemTemplate>
+                </xforms:SfRotator>
+                <BoxView HeightRequest="1" BackgroundColor="DarkGray"/>
+                <Label
+                FontSize="16"
+                Text="Multiple rotator item templates using ContentPresenter and binding code behind generated templates"
+                HorizontalTextAlignment="Center"/>
+                <xforms:SfRotator
+                HeightRequest="200"
+                ItemsSource="{Binding CustomTemplateRotatorList}"
+                ItemTemplate="{StaticResource CustomTemplates}">
+                </xforms:SfRotator>
+                <BoxView HeightRequest="1" BackgroundColor="DarkGray"/>
+                <Label
+                FontSize="16"
+                Text="Multiple rotator item templates using ContentPresenter and binding code behind generated dynamic views"
+                HorizontalTextAlignment="Center"/>
+                <xforms:SfRotator
+                HeightRequest="200"
+                ItemsSource="{Binding ViewsRotatorList}"
+                ItemTemplate="{StaticResource CustomViews}">
+                </xforms:SfRotator>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

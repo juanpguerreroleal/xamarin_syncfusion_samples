@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xforms="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="SyncfusionSamples.Views.Templates.ChartTemplate">
+    <xforms:SfChart
+        HeightRequest="150"
+        WidthRequest="100">
+        <xforms:SfChart.PrimaryAxis>
+            <xforms:CategoryAxis>
+            </xforms:CategoryAxis>
+        </xforms:SfChart.PrimaryAxis>
+        <xforms:SfChart.SecondaryAxis>
+            <xforms:NumericalAxis>
+            </xforms:NumericalAxis>
+        </xforms:SfChart.SecondaryAxis>
+        <xforms:SfChart.Series>
+            <xforms:ColumnSeries ItemsSource="{Binding HighTemperature}" XBindingPath="Month" YBindingPath="Value"/>
+        </xforms:SfChart.Series>
+    </xforms:SfChart>
+</StackLayout>
